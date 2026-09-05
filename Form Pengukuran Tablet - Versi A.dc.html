@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" />
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin:0; background:#C9CFC7; color:#16211C; font-family:'Plus Jakarta Sans', system-ui, sans-serif; font-size:18px; line-height:1.5; font-feature-settings:"tnum" 1,"lnum" 1; -webkit-font-smoothing:antialiased; }
+  a { color:#0F6E44; } a:hover { color:#16211C; }
+  button { font-family:inherit; font-feature-settings:"tnum" 1,"lnum" 1; cursor:pointer; }
+  @keyframes kedip { 0%,100% { opacity:1 } 50% { opacity:0.25 } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;overflow:auto">
+    <div style="transform:scale({{ escala }});transform-origin:center center;flex-shrink:0">
+    <div data-screen-label="Form pengukuran, keypad kanan" style="position:relative;width:1280px;height:800px;background:#EDEFEA;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 70px rgba(22,33,28,0.32)">
+
+      <header style="flex-shrink:0;display:flex;align-items:center;gap:10px;padding:14px 16px;background:#FFFFFF;border-bottom:1px solid #DCE0DA">
+        <div style="width:52px;height:52px;flex-shrink:0;border-radius:14px;background:#E9F3EC;color:#0F6E44;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800">NA</div>
+        <div style="display:flex;flex-direction:column;gap:2px;flex-shrink:0">
+          <div style="font-size:21px;font-weight:800;letter-spacing:-0.01em;white-space:nowrap">Nabila Ayu Ramadhani</div>
+          <div style="font-size:14px;color:#4A5750;white-space:nowrap">14 bulan &nbsp;·&nbsp; Ibu Sri Wahyuni &nbsp;·&nbsp; RT 03</div>
+        </div>
+        <div style="width:1px;height:44px;background:#DCE0DA;flex-shrink:0;margin:0 2px"></div>
+        <div style="display:flex;flex-direction:column;gap:4px;flex-shrink:0">
+          <div style="font-size:13px;font-weight:600;color:#4A5750">Bulan lalu</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:16px;font-weight:700;white-space:nowrap">8,9 kg &nbsp;·&nbsp; 75,1 cm</span>
+            <span style="display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:8px;background:#E9F3EC;border:1px solid #14713D;color:#14713D;font-size:13px;font-weight:700;white-space:nowrap"><i class="ph-fill ph-check-circle" style="font-size:14px"></i>Gizi Baik</span>
+          </div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="font-size:15px;font-weight:600;color:#4A5750;flex-shrink:0;white-space:nowrap">Anak 7 dari 32</div>
+        <button type="button" style="flex-shrink:0;height:52px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;border:1px solid #A8B0A9;border-radius:12px;background:#FFFFFF;color:#16211C;font-size:16px;font-weight:700;white-space:nowrap" style-hover="background:#F6F7F5"><i class="ph-bold ph-user-minus" style="font-size:19px"></i>Tidak hadir</button>
+        <button type="button" style="flex-shrink:0;height:52px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;border:1px solid #0B6B70;border-radius:12px;background:#FFFFFF;color:#0B6B70;font-size:16px;font-weight:700;white-space:nowrap" style-hover="background:#EDF6F6">Anak berikutnya<i class="ph-bold ph-arrow-right" style="font-size:19px"></i></button>
+      </header>
+
+      <div style="flex:1;min-height:0;display:flex;gap:20px;padding:20px 28px">
+
+        <section style="flex:1;min-width:0;background:#FFFFFF;border:1px solid #DCE0DA;border-radius:16px;padding:22px 26px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:baseline;justify-content:space-between">
+            <h2 style="margin:0;font-size:21px;font-weight:800">Pengukuran hari ini</h2>
+            <span style="font-size:16px;color:#4A5750">Sentuh kolom, lalu ketik di keypad</span>
+          </div>
+
+          <button type="button" onClick="{{ pilihBb }}" style="display:flex;align-items:center;gap:20px;padding:0;background:transparent;border:0;text-align:left;width:100%">
+            <span style="width:250px;flex-shrink:0;display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:20px;font-weight:700">Berat Badan</span>
+              <span style="font-size:16px;color:#4A5750">Timbangan digital</span>
+            </span>
+            <span style="flex:1;min-width:0;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-radius:14px;background:#FFFFFF;border:2px solid {{ bbGaris }}">
+              <span style="font-size:42px;font-weight:800;letter-spacing:-0.01em">{{ bbNilai }}</span>
+              <span style="font-size:21px;font-weight:700;color:#4A5750">kg</span>
+            </span>
+          </button>
+
+          <button type="button" onClick="{{ pilihPb }}" style="display:flex;align-items:center;gap:20px;padding:0;background:transparent;border:0;text-align:left;width:100%">
+            <span style="width:250px;flex-shrink:0;display:flex;flex-direction:column;gap:6px">
+              <span style="font-size:20px;font-weight:700">{{ pbLabel }}</span>
+              <span style="display:inline-flex;align-self:flex-start;border:1px solid #DCE0DA;border-radius:10px;overflow:hidden">
+                <span onClick="{{ pilihTerlentang }}" style="padding:6px 12px;font-size:15px;font-weight:700;background:{{ tlBg }};color:{{ tlWarna }}">Terlentang</span>
+                <span onClick="{{ pilihBerdiri }}" style="padding:6px 12px;font-size:15px;font-weight:700;border-left:1px solid #DCE0DA;background:{{ bdBg }};color:{{ bdWarna }}">Berdiri</span>
+              </span>
+            </span>
+            <span style="flex:1;min-width:0;height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-radius:14px;background:#FFFFFF;border:2px solid {{ pbGaris }}">
+              <span style="font-size:42px;font-weight:800;letter-spacing:-0.01em">{{ pbNilai }}</span>
+              <span style="font-size:21px;font-weight:700;color:#4A5750">cm</span>
+            </span>
+          </button>
+
+          <div style="display:flex;align-items:center;gap:14px;margin-top:2px">
+            <span style="font-size:15px;font-weight:700;letter-spacing:0.06em;color:#4A5750">PENGUKURAN TAMBAHAN</span>
+            <span style="flex:1;height:1px;background:#DCE0DA"></span>
+          </div>
+
+          <button type="button" onClick="{{ pilihLila }}" style="display:flex;align-items:center;gap:20px;padding:0;background:transparent;border:0;text-align:left;width:100%">
+            <span style="width:250px;flex-shrink:0;display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:20px;font-weight:700">LILA</span>
+              <span style="font-size:16px;color:#4A5750">Lingkar lengan atas</span>
+            </span>
+            <span style="flex:1;min-width:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-radius:14px;background:#FFFFFF;border:2px solid {{ lilaGaris }}">
+              <span style="font-size:34px;font-weight:800">{{ lilaNilai }}</span>
+              <span style="font-size:20px;font-weight:700;color:#4A5750">cm</span>
+            </span>
+          </button>
+
+          <button type="button" onClick="{{ pilihLika }}" style="display:flex;align-items:center;gap:20px;padding:0;background:transparent;border:0;text-align:left;width:100%">
+            <span style="width:250px;flex-shrink:0;display:flex;flex-direction:column;gap:2px">
+              <span style="font-size:20px;font-weight:700">LIKA</span>
+              <span style="font-size:16px;color:#4A5750">Lingkar kepala</span>
+            </span>
+            <span style="flex:1;min-width:0;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;border-radius:14px;background:#FFFFFF;border:2px solid {{ likaGaris }}">
+              <span style="font-size:34px;font-weight:800">{{ likaNilai }}</span>
+              <span style="font-size:20px;font-weight:700;color:#4A5750">cm</span>
+            </span>
+          </button>
+        </section>
+
+        <section style="width:372px;flex-shrink:0;background:#FFFFFF;border:1px solid #DCE0DA;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:2px;padding:0 4px">
+            <span style="font-size:15px;font-weight:600;color:#4A5750">Sedang mengisi</span>
+            <span style="font-size:20px;font-weight:800">{{ aktifLabel }}</span>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:10px">
+            <button type="button" onClick="{{ k1 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">1</button>
+            <button type="button" onClick="{{ k2 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">2</button>
+            <button type="button" onClick="{{ k3 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">3</button>
+            <button type="button" onClick="{{ k4 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">4</button>
+            <button type="button" onClick="{{ k5 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">5</button>
+            <button type="button" onClick="{{ k6 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">6</button>
+            <button type="button" onClick="{{ k7 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">7</button>
+            <button type="button" onClick="{{ k8 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">8</button>
+            <button type="button" onClick="{{ k9 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">9</button>
+            <button type="button" onClick="{{ kKoma }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">,</button>
+            <button type="button" onClick="{{ k0 }}" style="border:1px solid #DCE0DA;border-radius:12px;background:#F6F7F5;font-size:30px;font-weight:700;color:#16211C" style-hover="background:#E9EDE7">0</button>
+            <button type="button" onClick="{{ kHapus }}" style="display:flex;align-items:center;justify-content:center;border:1px solid #A8B0A9;border-radius:12px;background:#FFFFFF;color:#16211C" style-hover="background:#F6F7F5"><i class="ph-bold ph-backspace" style="font-size:30px"></i></button>
+          </div>
+          <button type="button" onClick="{{ kBerikutnya }}" style="height:66px;flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:12px;background:#0B6B70;color:#FFFFFF;font-size:20px;font-weight:700" style-hover="background:#095458">Berikutnya<i class="ph-bold ph-arrow-down" style="font-size:22px"></i></button>
+        </section>
+      </div>
+
+      <div style="flex-shrink:0;display:flex;align-items:stretch;gap:14px;padding:16px 28px;background:#FFFFFF;border-top:1px solid #DCE0DA">
+        <sc-for list="{{ kartu }}" as="k" hint-placeholder-count="4">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:12px;border:1px solid {{ k.garis }};background:{{ k.latar }}">
+            <span style="font-size:15px;font-weight:700;color:#4A5750">{{ k.indeks }}</span>
+            <span style="font-size:21px;font-weight:800;color:{{ k.warna }};white-space:nowrap">{{ k.kategori }}</span>
+            <span style="font-size:15px;color:#4A5750">{{ k.z }}</span>
+          </div>
+        </sc-for>
+        <button type="button" onClick="{{ bukaDialog }}" style="width:268px;flex-shrink:0;display:flex;align-items:center;justify-content:center;gap:12px;border:0;border-radius:12px;background:#0F6E44;color:#FFFFFF;font-size:20px;font-weight:800" style-hover="background:#0B5334"><i class="ph-bold ph-check" style="font-size:24px"></i>Simpan dan lanjut</button>
+      </div>
+
+      <sc-if value="{{ dialogTerbuka }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;inset:0;background:rgba(22,33,28,0.55);display:flex;align-items:center;justify-content:center;padding:40px">
+          <div style="width:660px;background:#FFFFFF;border-radius:18px;padding:28px 30px;display:flex;flex-direction:column;gap:18px;box-shadow:0 24px 60px rgba(22,33,28,0.3)">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <h3 style="margin:0;font-size:26px;font-weight:800">Periksa dulu sebelum disimpan</h3>
+              <p style="margin:0;font-size:18px;color:#4A5750">Nabila Ayu Ramadhani, 14 bulan. Setelah disimpan, catatan langsung masuk ke Buku KIA.</p>
+            </div>
+            <div style="border:1px solid #DCE0DA;border-radius:12px;overflow:hidden">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#F6F7F5;border-bottom:1px solid #DCE0DA">
+                <span style="font-size:18px;font-weight:600">Berat Badan</span>
+                <span style="font-size:20px;font-weight:800">{{ bbRingkas }}</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid #DCE0DA">
+                <span style="font-size:18px;font-weight:600">{{ pbLabel }}</span>
+                <span style="font-size:20px;font-weight:800">{{ pbRingkas }}</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#F6F7F5;border-bottom:1px solid #DCE0DA">
+                <span style="font-size:18px;font-weight:600">LILA</span>
+                <span style="font-size:20px;font-weight:800">{{ lilaRingkas }}</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 18px">
+                <span style="font-size:18px;font-weight:600">LIKA</span>
+                <span style="font-size:20px;font-weight:800">{{ likaRingkas }}</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:14px">
+              <button type="button" onClick="{{ tutupDialog }}" style="flex:1;height:64px;border:1px solid #A8B0A9;border-radius:12px;background:#FFFFFF;color:#16211C;font-size:19px;font-weight:700" style-hover="background:#F6F7F5">Perbaiki dulu</button>
+              <button type="button" onClick="{{ tutupDialog }}" style="flex:1;height:64px;border:0;border-radius:12px;background:#0F6E44;color:#FFFFFF;font-size:19px;font-weight:800" style-hover="background:#0B5334">Ya, simpan dan lanjut</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+  </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1420,&quot;height&quot;:940}}">
+const URUT = ['bb', 'pb', 'lila', 'lika'];
+const LABEL = { bb: 'Berat Badan', pb: 'Panjang Badan', lila: 'LILA', lika: 'LIKA' };
+const SATUAN = { bb: 'kg', pb: 'cm', lila: 'cm', lika: 'cm' };
+
+class Component extends DCLogic {
+  state = {
+    v: { bb: '9,2', pb: '76,4', lila: '14,2', lika: '46,0' },
+    aktif: 'bb',
+    metode: 'terlentang',
+    dialog: false,
+    escala: 1
+  };
+
+  componentDidMount() {
+    this.hitungEscala();
+    this._onResize = () => this.hitungEscala();
+    window.addEventListener('resize', this._onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+  }
+
+  hitungEscala() {
+    const disponivel = Math.max(320, window.innerWidth - 80);
+    const disponivelAltura = Math.max(320, window.innerHeight - 80);
+    const escala = Math.min(1, disponivel / 1280, disponivelAltura / 800);
+    this.setState({ escala });
+  }
+
+  ketik(ch) {
+    this.setState(s => {
+      const k = s.aktif;
+      let cur = s.v[k] || '';
+      if (ch === ',' && cur.includes(',')) return null;
+      if (ch === ',' && cur === '') cur = '0';
+      const next = (cur + ch).slice(0, 6);
+      return { v: Object.assign({}, s.v, { [k]: next }) };
+    });
+  }
+
+  hapus() {
+    this.setState(s => ({ v: Object.assign({}, s.v, { [s.aktif]: (s.v[s.aktif] || '').slice(0, -1) }) }));
+  }
+
+  lanjutKolom() {
+    this.setState(s => ({ aktif: URUT[(URUT.indexOf(s.aktif) + 1) % URUT.length] }));
+  }
+
+  pilih(k) {
+    return e => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ aktif: k }); };
+  }
+
+  kartuHasil() {
+    const v = this.state.v;
+    const ada = k => !!(v[k] && v[k] !== ',');
+    const kosong = { kategori: 'Belum ada', z: 'Isi dulu ukurannya', latar: '#F6F7F5', garis: '#DCE0DA', warna: '#4A5750' };
+    const baik = (kat, z) => ({ kategori: kat, z: z, latar: '#E9F3EC', garis: '#14713D', warna: '#14713D' });
+    const pbIndeks = this.state.metode === 'berdiri' ? 'TB/U' : 'PB/U';
+    const bbPb = this.state.metode === 'berdiri' ? 'BB/TB' : 'BB/PB';
+    return [
+      Object.assign({ indeks: 'BB/U' }, ada('bb') ? baik('Gizi Baik', '-0,4 SD') : kosong),
+      Object.assign({ indeks: pbIndeks }, ada('pb') ? baik('Normal', '-0,8 SD') : kosong),
+      Object.assign({ indeks: bbPb }, ada('bb') && ada('pb') ? baik('Gizi Baik', '+0,2 SD') : kosong),
+      Object.assign({ indeks: 'LILA' }, ada('lila') ? baik('Normal', '14,2 cm') : kosong)
+    ];
+  }
+
+  renderVals() {
+    const s = this.state;
+    const v = s.v;
+    const garis = k => (s.aktif === k ? '#0F6E44' : '#A8B0A9');
+    const tampil = k => (v[k] ? v[k] : '—');
+    const ringkas = k => (v[k] ? v[k] + ' ' + SATUAN[k] : 'Belum diisi');
+    const berdiri = s.metode === 'berdiri';
+    return {
+      bbNilai: tampil('bb'), pbNilai: tampil('pb'), lilaNilai: tampil('lila'), likaNilai: tampil('lika'),
+      bbGaris: garis('bb'), pbGaris: garis('pb'), lilaGaris: garis('lila'), likaGaris: garis('lika'),
+      bbRingkas: ringkas('bb'), pbRingkas: ringkas('pb'), lilaRingkas: ringkas('lila'), likaRingkas: ringkas('lika'),
+      pbLabel: berdiri ? 'Tinggi Badan' : 'Panjang Badan',
+      aktifLabel: s.aktif === 'pb' ? (berdiri ? 'Tinggi Badan' : 'Panjang Badan') : LABEL[s.aktif],
+      tlBg: berdiri ? '#FFFFFF' : '#16211C', tlWarna: berdiri ? '#4A5750' : '#FFFFFF',
+      bdBg: berdiri ? '#16211C' : '#FFFFFF', bdWarna: berdiri ? '#FFFFFF' : '#4A5750',
+      pilihTerlentang: e => { e.stopPropagation(); this.setState({ metode: 'terlentang' }); },
+      pilihBerdiri: e => { e.stopPropagation(); this.setState({ metode: 'berdiri' }); },
+      pilihBb: this.pilih('bb'), pilihPb: this.pilih('pb'), pilihLila: this.pilih('lila'), pilihLika: this.pilih('lika'),
+      k0: () => this.ketik('0'), k1: () => this.ketik('1'), k2: () => this.ketik('2'), k3: () => this.ketik('3'),
+      k4: () => this.ketik('4'), k5: () => this.ketik('5'), k6: () => this.ketik('6'), k7: () => this.ketik('7'),
+      k8: () => this.ketik('8'), k9: () => this.ketik('9'), kKoma: () => this.ketik(','),
+      kHapus: () => this.hapus(), kBerikutnya: () => this.lanjutKolom(),
+      kartu: this.kartuHasil(),
+      escala: s.escala,
+      dialogTerbuka: s.dialog,
+      bukaDialog: () => this.setState({ dialog: true }),
+      tutupDialog: () => this.setState({ dialog: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
